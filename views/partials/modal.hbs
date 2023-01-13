@@ -1,0 +1,135 @@
+<div class="modal" id="add-modal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="add-modal-title">Add {{entity.name}} Entry</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <form class="col g-2">
+                    {{#each entity.attrAdd}}
+
+                    <div class="row mb-2 g-3 align-items-center justify-content-between">
+                        <div class="col-auto">
+                            <label for="attr-{{{this}}}" class="col-form-label">{{this}}</label>
+                        </div>
+                        <div class="col-auto">
+                            {{!-- Determine whether to make dropdown or string input box --}}
+                            {{#if (contains this "id" @index ../entity.name)}}
+                                <select id="attr-{{{this}}}">
+                                    <option value="">Select a value</option>
+                                    {{#each (access ../dropdowns this)}}
+                                        <option value="{{{@key}}}">{{this}}</option>
+                                    {{/each}}
+                                </select>
+                            {{else}}
+                                {{#if (contains this "date")}}
+                                    <input type="date" id="attr-{{{this}}}" class="form-control" required="required">
+                                {{else}}
+                                    <input type="text" id="attr-{{{this}}}" class="form-control" required="required">
+                                {{/if}}
+                            {{/if}}
+                        </div>
+                    </div>
+
+                    {{/each}}
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="add-entity-button">Add</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal" id="delete-modal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            
+            <div class="modal-header">
+                <h5 class="modal-title" id="delete-modal-title">Delete {{entity.name}} Entry</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <form class="col g-2" novalidate>
+                    {{#each entity.attrAll}}
+
+                    <div class="row mb-2 g-3 align-items-center justify-content-between">
+                        <div class="col-auto">
+                            <label for="delete-attr-{{{this}}}" class="col-form-label">{{this}}</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" id="delete-attr-{{{this}}}" class="form-control" readonly="readonly">
+                        </div>
+                    </div>
+
+                    {{/each}}
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                Are you sure you want to delete the above record? This action cannot be undone.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" id="confirm-delete-button">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="update-modal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="update-modal-title">Update {{entity.name}} Entry</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            
+            <div class="modal-body">
+                <form class="col g-2">
+                    {{#each entity.attrUpdate}}
+
+                    <div class="row mb-2 g-3 align-items-center justify-content-between">
+                        <div class="col-auto">
+                            <label for="update-attr-{{{this}}}" class="col-form-label">{{this}}</label>
+                        </div>
+                        <div class="col-auto">
+                            {{!-- Determine whether to make dropdown or string input box --}}
+                            {{#if (contains this "id" @index ../entity.name)}}
+                                <select id="update-attr-{{{this}}}">
+                                    <option value="">Select a value</option>
+                                    {{#each (access ../dropdowns this)}}
+                                        <option value="{{{@key}}}">{{this}}</option>
+                                    {{/each}}
+                                </select>
+                            {{else}}
+                                {{#if (contains this "date")}}
+                                    <input type="date" id="update-attr-{{{this}}}" class="form-control" required="required">
+                                {{else}}
+                                    <input type="text" id="update-attr-{{{this}}}" class="form-control" required="required">
+                                {{/if}}
+                            {{/if}}
+                        </div>
+                    </div>
+
+                    {{/each}}
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-warning" id="confirm-update-button">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="module" src="buttons.js"></script>

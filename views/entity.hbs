@@ -1,0 +1,47 @@
+<div id="entity-template" class="table-responsive-md">
+
+    <h1 id="entity-name">{{entity.name}}</h1>
+
+    {{!-- Buttons --}}
+    <div class="btn-group gap-4 d-md-flex mb-2" aria-label="Table operations">
+        <button type="button" class="col btn btn-success" data-bs-toggle="modal"
+            data-bs-target="#add-modal">ADD</button>
+
+        <form id="search-form" method='GET' action='{{{activePage}}}' class="d-flex">
+            <input name="q" class="form-control me-2" type="search" placeholder='Search "{{{entity.attrSearch}}}"'
+                aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">SEARCH</button>
+        </form>
+    </div>
+
+    {{!-- Table Content --}}
+    <table class="table table-hover">
+        <thead class="table-dark">
+            <tr>
+                {{#each entity.attributes}}
+                <th class="w-auto">{{this}}</th>
+                {{/each}}
+                <th class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody id="{{{entity.name}}}-table">
+            {{#each entity.rows}}
+            <tr id="row-{{{@index}}}">
+                {{!-- Data cells in row --}}
+                {{#each this}}
+                <td class="w-auto col-{{{@index}}}">{{this}}</td>
+                {{/each}}
+                <td>
+                    <div class="btn-group gap-1 d-md-flex mb-2" aria-label="Table operations">
+                        {{>updateButton}}
+                        {{>deleteButton}}
+                    </div>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+</div>
+
+{{>modal}}

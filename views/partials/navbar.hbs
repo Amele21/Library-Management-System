@@ -1,0 +1,42 @@
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">Library Management System</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="navbar-nav">
+                <a  {{#eq activePage "/"}}   class="nav-link active" aria-current="page" 
+                    {{else}}                 class="nav-link" {{/eq}} 
+                    href="./">Home</a>
+                
+                <a  {{#eq activePage "/books"}}  class="nav-link active" aria-current="page" 
+                    {{else}}                     class="nav-link" {{/eq}} 
+                    href="./books">Books</a>
+                
+                <a  {{#eq activePage "/readers"}}  class="nav-link active" aria-current="page" 
+                    {{else}}                       class="nav-link" {{/eq}} 
+                    href="./readers">Readers</a>
+                
+                <a  {{#eq activePage "/borrowed"}}  class="nav-link active" aria-current="page" 
+                    {{else}}                        class="nav-link" {{/eq}} 
+                    href="./borrowed">BorrowedBooks</a>
+                
+                <a  {{#eq activePage "/authors"}}  class="nav-link active" aria-current="page" 
+                    {{else}}                       class="nav-link" {{/eq}} 
+                    href="./authors">Authors</a>
+                
+                <a  {{#eq activePage "/classifications"}}  class="nav-link active" aria-current="page" 
+                    {{else}}                               class="nav-link" {{/eq}} 
+                    href="./classifications">Classifications</a>
+                
+                <a  {{#eq activePage "/subjects"}}  class="nav-link active" aria-current="page" 
+                    {{else}}                        class="nav-link" {{/eq}} 
+                    href="./subjects">Subjects</a>
+            </div>
+        </div>
+    </div>
+</nav>
