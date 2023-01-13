@@ -1,5 +1,5 @@
 # CS340 Library Management System (Group 4)
-Adrian Melendrez and Christopher LeMoss
+Built by Adrian Melendrez and Christopher LeMoss
 
 ## Pages
 | Subdirectory      | Entity             |`INSERT`|`SELECT`| Misc.  |
